@@ -5,7 +5,12 @@ from utils.constantes import COR_FUNDO, COR_NEUTRO, COR_PRIMARIA, COR_SECUNDARIA
 
 
 def render(dados: tuple, kpis: dict) -> None:
-    _u, _e, _c, _ec, checkins, _i, promocoes = dados
+    _u, estab, _c, _ec, checkins, _i, promocoes = dados
+
+    MESES_PT = {
+        1: "Jan", 2: "Fev", 3: "Mar", 4: "Abr", 5: "Mai", 6: "Jun",
+        7: "Jul", 8: "Ago", 9: "Set", 10: "Out", 11: "Nov", 12: "Dez",
+    }
 
     st.title("Desempenho de Promoções")
     st.caption("Acompanhe o aproveitamento das suas promoções e o impacto no engajamento.")
@@ -32,34 +37,47 @@ def render(dados: tuple, kpis: dict) -> None:
 
     st.divider()
 
-    # ── Distribuição da taxa de uso ──────────────────────────────────
-    st.subheader("Distribuição da Taxa de Uso das Promoções")
-    if "taxa_uso" in promocoes.columns:
-        fig_hist = px.histogram(
-            promocoes,
-            x="taxa_uso",
-            nbins=20,
-            color_discrete_sequence=[COR_PRIMARIA],
-            title="Distribuição do Aproveitamento das Promoções",
-            labels={"taxa_uso": "Taxa de Uso", "count": "Quantidade de Promoções"},
+    # ── Uso de voucher por mês ───────────────────────────────────────
+    if not checkins.empty and "usou_voucher" in checkins.columns and "data_hora_checkin" in checkins.columns:
+        st.subheader("Uso de Voucher por Mês")
+        df_mes = checkins.copy()
+        df_mes = df_mes.dropna(subset=["data_hora_checkin"])
+        df_mes["mes_num"] = df_mes["data_hora_checkin"].dt.month
+        df_mes["ano"] = df_mes["data_hora_checkin"].dt.year
+        df_mes["usou_voucher"] = df_mes["usou_voucher"].map(
+            {True: "Com Voucher", False: "Sem Voucher", 1: "Com Voucher", 0: "Sem Voucher"}
+        ).fillna("Sem Voucher")
+        df_mes_agg = (
+            df_mes.groupby(["ano", "mes_num", "usou_voucher"])
+            .size()
+            .reset_index(name="Check-ins")
         )
-        fig_hist.add_vline(x=0.70, line_dash="dash", line_color=COR_VERDE, annotation_text="Meta 70%")
-        fig_hist.add_vline(x=0.30, line_dash="dash", line_color=COR_SECUNDARIA, annotation_text="Alerta 30%")
-        fig_hist.update_layout(
-            plot_bgcolor=COR_FUNDO,
-            paper_bgcolor=COR_FUNDO,
-            font=dict(color=COR_TEXTO),
-            xaxis=dict(tickformat=".0%"),
-            yaxis_title="Quantidade de Promoções",
-        )
-        st.plotly_chart(fig_hist, use_container_width=True)
-        st.markdown(
-            '<div class="insight-box"><strong>Insight:</strong> '
-            "A maioria das promoções não atinge 100% de aproveitamento. "
-            "Para promoções com uso abaixo de 30%, revise o prazo de validade, "
-            "o valor do desconto e o canal de divulgação.</div>",
-            unsafe_allow_html=True,
-        )
+        df_mes_agg["Mês"] = df_mes_agg["mes_num"].map(MESES_PT) + "/" + df_mes_agg["ano"].astype(str).str[-2:]
+        df_mes_agg = df_mes_agg.sort_values(["ano", "mes_num"])
+        if not df_mes_agg.empty:
+            fig_mes = px.line(
+                df_mes_agg,
+                x="Mês",
+                y="Check-ins",
+                color="usou_voucher",
+                markers=True,
+                color_discrete_map={"Com Voucher": COR_VERDE, "Sem Voucher": COR_SECUNDARIA},
+                title="Check-ins com e sem Voucher por Mês",
+                labels={"usou_voucher": "Tipo", "Check-ins": "Quantidade de Check-ins", "Mês": "Mês"},
+            )
+            fig_mes.update_layout(
+                plot_bgcolor=COR_FUNDO,
+                paper_bgcolor=COR_FUNDO,
+                font=dict(color=COR_TEXTO),
+            )
+            st.plotly_chart(fig_mes, use_container_width=True)
+            st.markdown(
+                '<div class="insight-box"><strong>Insight:</strong> '
+                "Meses com maior uso de voucher indicam campanhas mais efetivas. "
+                "Compare os picos com as datas em que promoções foram lançadas para "
+                "identificar o melhor período para divulgação.</div>",
+                unsafe_allow_html=True,
+            )
 
     st.divider()
 
@@ -78,31 +96,74 @@ def render(dados: tuple, kpis: dict) -> None:
                 df_voucher,
                 names="Tipo",
                 values="Check-ins",
-                color_discrete_map={"Com Voucher": COR_VERDE, "Sem Voucher": COR_NEUTRO},
+                color="Tipo",
+                color_discrete_map={"Com Voucher": COR_VERDE, "Sem Voucher": COR_SECUNDARIA},
                 hole=0.45,
                 title="Check-ins com e sem Voucher",
             )
+            fig_voucher.update_traces(textinfo="percent+value", textposition="outside")
             fig_voucher.update_layout(
                 paper_bgcolor=COR_FUNDO,
                 font=dict(color=COR_TEXTO),
             )
             st.plotly_chart(fig_voucher, use_container_width=True)
+            st.markdown(
+                '<div class="insight-box"><strong>Insight:</strong> '
+                "Usuários que utilizam voucher têm maior probabilidade de completar o check-in. "
+                "Promova vouchers nos horários de pico para aumentar a taxa de conversão.</div>",
+                unsafe_allow_html=True,
+            )
 
     st.divider()
 
     # ── Promoções com baixo aproveitamento ───────────────────────────
     if "taxa_uso" in promocoes.columns:
         st.subheader("Promoções com Baixo Aproveitamento")
-        colunas_exibir = [col for col in promocoes.columns if col not in ["id_promocao", "id_estabelecimento"]]
         df_baixo = (
-            promocoes[promocoes["taxa_uso"] < 0.30][colunas_exibir]
+            promocoes[promocoes["taxa_uso"] < 0.30]
             .sort_values("taxa_uso")
             .head(10)
+            .copy()
         )
         if not df_baixo.empty:
-            df_baixo = df_baixo.copy()
-            df_baixo["taxa_uso"] = df_baixo["taxa_uso"].map(lambda x: f"{x:.1%}")
-            st.dataframe(df_baixo, use_container_width=True)
+            if not estab.empty and "nome_estabelecimento" in estab.columns:
+                df_baixo = df_baixo.merge(
+                    estab[["id_estabelecimento", "nome_estabelecimento"]],
+                    on="id_estabelecimento",
+                    how="left",
+                )
+                df_baixo["Promoção"] = df_baixo["nome_estabelecimento"].fillna(
+                    "Promo #" + df_baixo["id_promocao"].astype(int).astype(str)
+                )
+            else:
+                df_baixo["Promoção"] = "Promo #" + df_baixo["id_promocao"].astype(int).astype(str)
+            df_baixo["Taxa de Uso (%)"] = (df_baixo["taxa_uso"] * 100).round(1)
+            fig_baixo = px.bar(
+                df_baixo.sort_values("Taxa de Uso (%)"),
+                x="Taxa de Uso (%)",
+                y="Promoção",
+                orientation="h",
+                color_discrete_sequence=[COR_SECUNDARIA],
+                text="Taxa de Uso (%)",
+                title="Top 10 Promoções com Menor Aproveitamento (< 30%)",
+                labels={"Taxa de Uso (%)": "Taxa de Uso (%)", "Promoção": ""},
+            )
+            fig_baixo.update_traces(texttemplate="%{text:.1f}%", textposition="outside")
+            fig_baixo.add_vline(x=30, line_dash="dash", line_color=COR_PRIMARIA, annotation_text="Limite 30%")
+            fig_baixo.update_layout(
+                plot_bgcolor=COR_FUNDO,
+                paper_bgcolor=COR_FUNDO,
+                font=dict(color=COR_TEXTO),
+                xaxis=dict(range=[0, 40]),
+                yaxis=dict(autorange="reversed"),
+            )
+            st.plotly_chart(fig_baixo, use_container_width=True)
+            st.markdown(
+                '<div class="insight-box"><strong>Insight:</strong> '
+                "Promoções abaixo de 30% de uso precisam de atenção. "
+                "Revise o prazo de validade, o valor do desconto e o canal de divulgação.</div>",
+                unsafe_allow_html=True,
+            )
         else:
             st.success("Nenhuma promoção com aproveitamento abaixo de 30%.")
 
