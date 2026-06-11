@@ -1,0 +1,31 @@
+id_categoria,nome_categoria,tipo_categoria
+1,Pizzaria,Gastronomia
+2,Hamburgueria,Gastronomia
+3,Comida Regional,Gastronomia
+4,Sushi,Gastronomia
+5,Vegano,Gastronomia
+6,Cafeteria,Gastronomia
+7,Doceria,Gastronomia
+8,Sorveteria,Gastronomia
+9,Churrascaria,Gastronomia
+10,Frutos do Mar,Gastronomia
+11,Padaria,Gastronomia
+12,Food Truck,Gastronomia
+13,Self-Service,Gastronomia
+14,Bar de Cerveja Artesanal,Bares
+15,Boteco,Bares
+16,Pub,Bares
+17,Coquetelaria,Bares
+18,Rooftop Bar,Bares
+19,Happy Hour,Bares
+20,Karaokê,Vida Noturna
+21,Balada,Vida Noturna
+22,Forró,Vida Noturna
+23,Samba,Vida Noturna
+24,Show ao Vivo,Vida Noturna
+25,Stand-up Comedy,Vida Noturna
+26,Tour Cultural,Experiências
+27,Passeio de Barco,Experiências
+28,Trilha Ecológica,Experiências
+29,Feira Gastronômica,Experiências
+30,Escape Room,Experiências

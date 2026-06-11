@@ -1,0 +1,301 @@
+id_estabelecimento,nome_estabelecimento,origem_geografica,faixa_de_gasto,criacao_promocoes,horario_maior_busca,bairro
+1,Hamburgueria da Vila Boa Viagem,Recife,baixo,2.0,11:55:15,Graças
+2,Bistrô Nordestino Casa Forte,Abreu e Lima,baixo,2.0,11:20:15,Centro
+3,Hamburgueria Saboroso Boa Vista,Paulista,baixo,1.0,10:40:45,Pau Amarelo
+4,Sushi Pina Imperial,Olinda,medio,0.0,12:05:00,Casa Caiada
+5,Bistrô Nordestino Iputinga,recife,medio,2.0,15:50:00,Madalena
+6,Tapas Nordestino Capibaribe,Recife,alto,1.0,09:40:15,Casa Forte
+7,Tapas Imperial Madalena,Recife,baixo,,09:50:30,Boa Viagem
+8,Pizzaria Olinda Premium,caruaru,baixo,1.0,14:00:15,Maurício de Nassau
+9,Café Setúbal Saboroso,Olinda,medio,1.0,20:35:00,Casa Caiada
+10,Café Beberibe Nordestino,Jaboatão dos Guararapes,baixo,1.0,16:15:30,Prazeres
+11,Bar Imperial Derby,recife,baixo,1.0,16:35:15,Espinheiro
+12,Cantina Raiz Santo Amaro,São Lourenço da Mata,baixo,4.0,12:55:30,Centro
+13,Doceria Parnamirim da Esquina,Igarassu,baixo,5.0,15:05:00,Centro
+14,Boteco Parnamirim da Vila,Recife,alto,2.0,09:50:45,Madalena
+15,Hamburgueria Raiz Boa Vista,Recife,medio,2.0,10:10:30,Madalena
+16,Sushi Capibaribe Nordestino,Recife,medio,2.0,20:50:30,Casa Forte
+17,Hamburgueria Beberibe Nordestino,Recife,baixo,1.0,08:05:15,Derby
+18,Bar Olinda Nordestino,Olinda,baixo,0.0,14:10:30,Bairro Novo
+19,Pizzaria da Esquina Bairro Novo,Recife,baixo,4.0,10:30:00,Derby
+20,Café Torre do Jardim,Recife,baixo,5.0,11:30:00,Derby
+21,Pizzaria Saboroso Rio Doce,Olinda,baixo,4.0,20:25:15,Casa Caiada
+22,Sushi Arretado Aflitos,Recife,medio,1.0,16:40:00,Madalena
+23,Bistrô Central Cordeiro,RECIFE,medio,1.0,13:40:45,Espinheiro
+24,Hamburgueria Parnamirim Saboroso,Recife,baixo,1.0,14:40:00,Casa Forte
+25,Cantina Beberibe Premium,Olinda,alto,2.0,15:15:30,Bairro Novo
+26,Restaurante Premium Espinheiro,Cabo de Santo Agostinho,medio,4.0,19:35:45,Centro
+27,Bar Nordestino Poço,Recife,medio,1.0,14:10:15,Espinheiro
+28,Cantina Nordestino Bairro Novo,Olinda,medio,2.0,13:25:45,Rio Doce
+29,Hamburgueria Casa Forte da Esquina,Olinda,baixo,1.0,17:05:30,Bairro Novo
+30,Bistrô Saboroso Parnamirim,Recife,baixo,1.0,14:25:00,Casa Forte
+31,Doceria Raiz Setúbal,OLINDA,baixo,0.0,21:20:15,Bairro Novo
+32,Boteco do Jardim Madalena,Recife,medio,2.0,12:25:30,Boa Viagem
+33,Café Bongi Contemporâneo,Recife,baixo,,15:50:15,Madalena
+34,Restaurante da Vila Casa Forte,Abreu e Lima,baixo,5.0,13:35:30,Centro
+35,Hamburgueria Carmo Imperial,São Lourenço da Mata,baixo,0.0,20:10:30,Centro
+36,Boteco Raiz Cordeiro,Cabo de Santo Agostinho,baixo,0.0,07:20:45,Centro
+37,Tapas do Mar Rio Doce,Recife,medio,1.0,22:25:15,Boa Viagem
+38,Hamburgueria Beberibe Contemporâneo,Recife,medio,0.0,16:50:45,Espinheiro
+39,Hamburgueria Derby do Jardim,Jaboatão dos Guararapes,baixo,0.0,07:25:00,Candeias
+40,Café da Esquina Boa Viagem,RECIFE,baixo,1.0,15:25:30,Derby
+41,Doceria da Praia Iputinga,Recife,baixo,2.0,20:05:30,Casa Forte
+42,Tapas da Vila Olinda,Olinda,baixo,0.0,16:45:30,Rio Doce
+43,Hamburgueria Carmo Contemporâneo,Recife,baixo,,20:20:15,Madalena
+44,Cantina Premium Aflitos,Vitória de Santo Antão,baixo,2.0,22:15:30,Matriz
+45,Tapas Carmo do Mar,Recife,baixo,0.0,11:15:00,Madalena
+46,Restaurante da Vila Torre,Jaboatão dos Guararapes,medio,5.0,15:00:15,Piedade
+47,Pizzaria Pina Nordestino,Recife,medio,3.0,19:25:00,Graças
+48,Sushi da Vila Graças,Olinda,baixo,3.0,25:61,Casa Caiada
+49,Bar Premium Parnamirim,Olinda,baixo,0.0,16:00:15,Rio Doce
+50,Café Arretado Bongi,Recife,medio,3.0,13:45:00,Graças
+51,Café da Praia Iputinga,São Lourenço Da Mata,baixo,2.0,09:55:15,Centro
+52,Boteco Nordestino Parnamirim,Paulista,medio,0.0,13:05:45,Janga
+53,Doceria Capibaribe Nordestino,Goiana,medio,1.0,12:20:00,Centro
+54,Hamburgueria Arretado Torre,Garanhuns,baixo,4.0,19:50:30,Centro
+55,Tapas Derby da Esquina,Olinda,baixo,2.0,15:30:30,Bairro Novo
+56,Bar do Jardim Boa Viagem,Vitória de Santo Antão,medio,1.0,13:00:00,Matriz
+57,Bistrô Madalena Raiz,Recife,baixo,3.0,20:55:15,Boa Viagem
+58,Doceria Pina Arretado,Recife,medio,2.0,10:35:30,Casa Forte
+59,Restaurante do Jardim Graças,Recife,alto,2.0,21:55:30,Graças
+60,Pizzaria Bongi Arretado,Recife,medio,2.0,09:35:45,Casa Forte
+61,Café Saboroso Boa Vista,Recife,baixo,3.0,16:35:30,Graças
+62,Pub Nordestino Dois Irmãos,Recife,medio,3.0,19:55:15,Boa Viagem
+63,Boteco Derby Nordestino,Igarassu,baixo,0.0,20:20:00,Centro
+64,Boteco do Jardim Setúbal,recife,baixo,1.0,12:45:15,Casa Forte
+65,Doceria do Mar Rio Doce,Recife,alto,2.0,14:45:00,Derby
+66,Hamburgueria da Vila Pina,Olinda,baixo,1.0,18:35:30,Bairro Novo
+67,Cantina Olinda Premium,Recife,alto,2.0,18:10:00,Madalena
+68,Bistrô Nordestino Parnamirim,Cabo de Santo Agostinho,alto,4.0,13:30:30,Centro
+69,Boteco Central Santo Amaro,Recife,baixo,3.0,15:40:00,Madalena
+70,Bar da Esquina Dois Irmãos,Serra Talhada,baixo,4.0,21:30:15,Centro
+71,Tapas da Vila Pina,PAULISTA,baixo,3.0,16:35:45,Janga
+72,Tapas do Mar Graças,Recife,baixo,0.0,17:10:15,Casa Forte
+73,Bistrô Central Setúbal,Recife,baixo,0.0,21:30:30,Derby
+74,Bistrô Boa Vista Imperial,Cabo de Santo Agostinho,medio,2.0,13:15:30,Garapu
+75,Boteco Encruzilhada do Mar,Jaboatão dos Guararapes,baixo,1.0,20:00:45,Prazeres
+76,Pub da Praia Setúbal,Paulista,baixo,0.0,19:50:45,Janga
+77,Doceria Premium Parnamirim,Paulista,medio,2.0,22:40:00,Janga
+78,Pub Várzea Central,Recife,baixo,5.0,18:50:30,Boa Viagem
+79,Restaurante Raiz Marco Zero,Recife,medio,1.0,10:15:15,Madalena
+80,Doceria Pina do Jardim,RECIFE,baixo,2.0,18:20:30,Derby
+81,Pub Contemporâneo Olinda,Caruaru,baixo,3.0,19:25:15,Centro
+82,Restaurante Contemporâneo Graças,Jaboatão dos Guararapes,medio,0.0,16:15:00,Prazeres
+83,Bar Raiz Graças,Recife,medio,1.0,10:35:30,Boa Viagem
+84,Bistrô Imperial Derby,Recife,medio,3.0,19:20:00,Graças
+85,Sushi Nordestino Poço,Recife,medio,2.0,12:55:00,Espinheiro
+86,Sushi da Vila Setúbal,recife,medio,3.0,18:10:30,Derby
+87,Sushi Contemporâneo Espinheiro,Paulista,baixo,3.0,16:45:30,Pau Amarelo
+88,Bistrô Capibaribe Arretado,Jaboatão dos Guararapes,baixo,2.0,16:15:30,Prazeres
+89,Pizzaria Imperial Casa Forte,Garanhuns,medio,1.0,22:35:15,Centro
+90,Pizzaria da Esquina Espinheiro,Olinda,medio,1.0,12:30:30,Rio Doce
+91,Bar do Mar Cordeiro,Recife,alto,2.0,13:50:45,Derby
+92,Sushi da Vila Graças,Jaboatão dos Guararapes,baixo,0.0,21:35:15,Prazeres
+93,Tapas da Praia Casa Forte,Paulista,baixo,2.0,10:00:30,Pau Amarelo
+94,Bar Torre Nordestino,Olinda,medio,1.0,18:50:45,Rio Doce
+95,Pub Capibaribe Contemporâneo,PAULISTA,baixo,,10:15:00,Janga
+96,Hamburgueria Contemporâneo Boa Viagem,Olinda,alto,1.0,21:35:30,Casa Caiada
+97,Tapas Rio Doce da Praia,Olinda,medio,1.0,11:55:30,Rio Doce
+98,Café da Praia Derby,Recife,baixo,0.0,17:25:30,Espinheiro
+99,Doceria Casa Forte Contemporâneo,Recife,medio,2.0,19:35:00,Graças
+100,Sushi Capibaribe Nordestino,Recife,medio,2.0,21:30:00,Derby
+101,Hamburgueria Olinda Arretado,recife,baixo,0.0,10:20:15,Derby
+102,Pub da Praia Boa Vista,Jaboatão dos Guararapes,alto,2.0,20:25:30,Prazeres
+103,Restaurante da Vila Bairro Novo,Recife,baixo,4.0,21:25:30,Derby
+104,Pizzaria Boa Viagem do Mar,Olinda,medio,4.0,12:20:30,Bairro Novo
+105,Café Santo Amaro Arretado,Vitória de Santo Antão,baixo,0.0,09:40:15,Matriz
+106,Pub Contemporâneo Capibaribe,Recife,medio,0.0,19:20:15,Graças
+107,Restaurante da Vila Graças,Recife,baixo,0.0,13:15:00,Madalena
+108,Doceria Parnamirim Central,Paulista,baixo,4.0,20:25:15,Pau Amarelo
+109,Cantina Parnamirim Raiz,Recife,alto,3.0,15:50:15,Madalena
+110,Café do Mar Recife Antigo,Recife,baixo,,21:50:30,Espinheiro
+111,Restaurante do Jardim Várzea,Recife,baixo,3.0,15:10:15,Boa Viagem
+112,Hamburgueria da Vila Torre,recife,alto,,11:30:45,Madalena
+113,Boteco Marco Zero Raiz,Ipojuca,alto,1.0,14:35:00,Porto de Galinhas
+114,Bistrô Central Dois Irmãos,Cabo de Santo Agostinho,medio,2.0,14:50:15,Garapu
+115,Boteco do Mar Aflitos,Jaboatão dos Guararapes,medio,2.0,12:05:00,Prazeres
+116,Cantina Premium Setúbal,Petrolina,baixo,3.0,15:00:45,Centro
+117,Doceria Madalena Premium,CABO DE SANTO AGOSTINHO,baixo,2.0,15:15:15,Garapu
+118,Doceria da Vila Encruzilhada,Recife,baixo,1.0,20:35:00,Graças
+119,Pub Nordestino Várzea,Garanhuns,medio,2.0,13:30:30,Centro
+120,Pub do Jardim Recife Antigo,Olinda,medio,4.0,12:10:15,Rio Doce
+121,Bistrô Nordestino Boa Viagem,Cabo de Santo Agostinho,medio,4.0,12:00:00,Garapu
+122,Boteco do Jardim Santo Amaro,Garanhuns,medio,1.0,14:35:30,Centro
+123,Pizzaria do Jardim Bairro Novo,Recife,baixo,0.0,09:10:30,Madalena
+124,Hamburgueria Contemporâneo Espinheiro,Recife,baixo,1.0,15:25:45,Boa Viagem
+125,Bar da Praia Aflitos,Recife,baixo,1.0,15:25:30,Espinheiro
+126,Pizzaria do Mar Derby,Recife,baixo,2.0,11:00:45,Derby
+127,Cantina Dois Irmãos Saboroso,Igarassu,baixo,1.0,20:30:30,Centro
+128,Sushi Contemporâneo Derby,Caruaru,medio,2.0,14:45:30,Centro
+129,Sushi Santo Amaro Nordestino,Recife,baixo,0.0,17:55:00,Espinheiro
+130,Boteco do Mar Iputinga,Olinda,baixo,2.0,08:55:45,Rio Doce
+131,Tapas Arretado Marco Zero,Recife,baixo,,18:35:00,Espinheiro
+132,Doceria Arretado Várzea,Recife,medio,,16:10:45,Espinheiro
+133,Bar Arretado Espinheiro,Recife,medio,2.0,11:35:15,Graças
+134,Hamburgueria da Vila Marco Zero,Recife,baixo,3.0,13:20:30,Casa Forte
+135,Tapas da Praia Rio Doce,Goiana,baixo,0.0,21:55:30,Centro
+136,Boteco Saboroso Recife Antigo,Recife,medio,2.0,18:10:45,Boa Viagem
+137,Bistrô Imperial Rio Doce,Olinda,baixo,1.0,22:35:15,Casa Caiada
+138,Hamburgueria Boa Vista Saboroso,Jaboatão dos Guararapes,medio,2.0,20:15:45,Prazeres
+139,Sushi da Praia Encruzilhada,RECIFE,medio,1.0,17:20:15,Graças
+140,Restaurante Recife Antigo da Praia,São Lourenço da Mata,baixo,1.0,13:05:30,Centro
+141,Sushi Bairro Novo Raiz,CAMARAGIBE,baixo,5.0,17:00:30,Centro
+142,Pub Rio Doce da Esquina,recife,alto,1.0,20:10:45,Espinheiro
+143,Pub Premium Boa Vista,Olinda,baixo,2.0,17:05:15,Rio Doce
+144,Doceria Rio Doce Central,Recife,baixo,0.0,21:20:45,Derby
+145,Tapas Arretado Bairro Novo,RECIFE,medio,2.0,13:05:30,Espinheiro
+146,Bar Premium Madalena,Recife,alto,1.0,16:55:45,Casa Forte
+147,Bistrô Várzea Premium,Olinda,alto,2.0,17:25:45,Rio Doce
+148,Restaurante Nordestino Bongi,Olinda,medio,0.0,16:05:00,Bairro Novo
+149,Bar da Esquina Setúbal,Recife,baixo,2.0,13:15:15,Graças
+150,Sushi Nordestino Capibaribe,Recife,baixo,5.0,19:35:00,Graças
+151,Pub Madalena Imperial,Vitória de Santo Antão,medio,3.0,20:35:30,Matriz
+152,Doceria do Mar Boa Vista,Recife,medio,6.0,21:00:15,Derby
+153,Bar Setúbal Premium,Recife,baixo,0.0,08:40:45,Madalena
+154,Doceria Cordeiro Contemporâneo,Olinda,alto,0.0,18:40:30,Rio Doce
+155,Bistrô Cordeiro da Vila,Serra Talhada,baixo,1.0,12:3:70,Centro
+156,Pub Arretado Iputinga,Recife,baixo,0.0,14:45:15,Boa Viagem
+157,Sushi do Jardim Beberibe,Jaboatão dos Guararapes,baixo,1.0,21:05:30,Prazeres
+158,Sushi Saboroso Boa Vista,Paulista,baixo,2.0,18:25:15,Pau Amarelo
+159,Tapas Boa Vista da Esquina,Recife,baixo,1.0,15:45:45,Casa Forte
+160,Pub da Esquina Santo Amaro,Paulista,baixo,2.0,15:05:00,Pau Amarelo
+161,Hamburgueria da Praia Beberibe,Recife,baixo,2.0,14:25:15,Casa Forte
+162,Pub Madalena Arretado,jaboatão dos guararapes,medio,1.0,18:20:15,Piedade
+163,Bar Recife Antigo Saboroso,JABOATÃO DOS GUARARAPES,medio,0.0,10:50:00,Candeias
+164,Cantina do Jardim Boa Vista,Olinda,medio,0.0,13:50:45,Casa Caiada
+165,Café Central Madalena,Recife,alto,5.0,12:40:00,Madalena
+166,Café Várzea Saboroso,Igarassu,baixo,5.0,11:00:15,Centro
+167,Boteco do Jardim Parnamirim,recife,baixo,,14:45:15,Derby
+168,Restaurante Nordestino Pernambuco,RECIFE,medio,1.0,08:55:15,Casa Forte
+169,Sushi Saboroso Boa Viagem,Recife,baixo,2.0,19:10:00,Graças
+170,Sushi Bongi Imperial,Olinda,alto,2.0,16:45:00,Casa Caiada
+171,Cantina da Praia Beberibe,Jaboatão dos Guararapes,baixo,1.0,14:35:30,Prazeres
+172,Boteco Contemporâneo Marco Zero,Recife,alto,4.0,14:00:30,Boa Viagem
+173,Sushi Bongi Nordestino,Olinda,baixo,3.0,13:10:15,Rio Doce
+174,Boteco da Esquina Boa Viagem,Recife,medio,1.0,15:35:15,Graças
+175,Hamburgueria Arretado Dois Irmãos,Jaboatão dos Guararapes,baixo,1.0,10:35:00,Candeias
+176,Café da Esquina Casa Forte,Recife,alto,0.0,13:15:30,Espinheiro
+177,Tapas do Mar Encruzilhada,Jaboatão dos Guararapes,baixo,2.0,16:50:00,Piedade
+178,Hamburgueria do Mar Graças,Recife,medio,0.0,15:50:15,Espinheiro
+179,Café Aflitos da Esquina,Goiana,alto,3.0,17:05:00,Centro
+180,Boteco do Jardim Várzea,Recife,baixo,3.0,13:35:00,Madalena
+181,Cantina Premium Boa Vista,Recife,medio,0.0,14:50:45,Espinheiro
+182,Boteco Pernambuco da Praia,RECIFE,medio,1.0,14:30:30,Madalena
+183,Restaurante Parnamirim Saboroso,Vitória de Santo Antão,baixo,2.0,20:20:45,Matriz
+184,Cantina Bairro Novo Nordestino,Petrolina,medio,0.0,18:25:15,Centro
+185,Hamburgueria Beberibe do Mar,Recife,medio,0.0,10:20:45,Madalena
+186,Bistrô Pernambuco Nordestino,Jaboatão dos Guararapes,alto,,19:00:00,Candeias
+187,Café Nordestino Casa Forte,cabo de santo agostinho,baixo,0.0,19:40:30,Centro
+188,Bar Raiz Várzea,Olinda,baixo,3.0,15:55:15,Rio Doce
+189,Pizzaria Torre Premium,olinda,alto,1.0,22:10:45,Bairro Novo
+190,Sushi Capibaribe Saboroso,Recife,medio,1.0,17:00:30,Madalena
+191,Café da Praia Derby,Recife,baixo,2.0,18:25:45,Casa Forte
+192,Pizzaria Raiz Rio Doce,Garanhuns,medio,3.0,12:40:45,Centro
+193,Boteco Capibaribe Imperial,Garanhuns,baixo,,12:45:00,Centro
+194,Sushi Saboroso Pernambuco,Jaboatão dos Guararapes,baixo,4.0,21:45:45,Prazeres
+195,Bar Beberibe Saboroso,Recife,baixo,0.0,21:30:15,Boa Viagem
+196,Hamburgueria Dois Irmãos Raiz,Recife,baixo,2.0,16:45:30,Boa Viagem
+197,Sushi Pina Premium,Paulista,medio,0.0,08:20:30,Janga
+198,Boteco Torre Arretado,Garanhuns,baixo,2.0,13:35:15,Centro
+199,Hamburgueria do Jardim Boa Viagem,Garanhuns,alto,1.0,14:05:30,Centro
+200,Pub da Vila Setúbal,Cabo de Santo Agostinho,alto,3.0,20:30:30,Garapu
+201,Hamburgueria Capibaribe da Esquina,Jaboatão dos Guararapes,medio,2.0,13:45:30,Piedade
+202,Café Saboroso Iputinga,Recife,baixo,0.0,08:35:30,Derby
+203,Pizzaria Raiz Dois Irmãos,Recife,baixo,2.0,16:05:30,Madalena
+204,Pub da Esquina Setúbal,Garanhuns,medio,1.0,18:35:15,Centro
+205,Sushi da Praia Espinheiro,Olinda,medio,1.0,18:55:30,Casa Caiada
+206,Bar da Praia Boa Vista,Recife,baixo,1.0,13:00:45,Casa Forte
+207,Pub Raiz Carmo,Recife,alto,1.0,19:40:00,Casa Forte
+208,Cantina do Mar Bongi,Jaboatão dos Guararapes,medio,2.0,17:45:45,Piedade
+209,Café da Esquina Várzea,RECIFE,alto,1.0,12:30:30,Madalena
+210,Pizzaria do Jardim Santo Amaro,Recife,medio,1.0,20:50:30,Derby
+211,Doceria Parnamirim da Praia,Olinda,medio,2.0,11:05:45,Casa Caiada
+212,Bistrô da Vila Madalena,Jaboatão dos Guararapes,baixo,0.0,21:50:30,Piedade
+213,Pub Beberibe Contemporâneo,Jaboatão dos Guararapes,alto,2.0,07:00:00,Piedade
+214,Pub Arretado Capibaribe,Recife,medio,1.0,08:55:00,Madalena
+215,Restaurante Recife Antigo da Vila,jaboatão dos guararapes,baixo,3.0,16:55:30,Candeias
+216,Doceria Nordestino Recife Antigo,recife,baixo,2.0,14:40:30,Graças
+217,Cantina da Esquina Parnamirim,Recife,baixo,4.0,14:20:00,Boa Viagem
+218,Boteco Parnamirim Saboroso,Paulista,medio,0.0,12:10:00,Pau Amarelo
+219,Doceria Santo Amaro da Esquina,jaboatão dos guararapes,alto,1.0,14:05:45,Candeias
+220,Bistrô Marco Zero da Vila,Caruaru,baixo,0.0,9h30,Centro
+221,Bar Saboroso Parnamirim,Jaboatão dos Guararapes,medio,2.0,13:20:15,Piedade
+222,Doceria Várzea Central,Olinda,baixo,2.0,08:00:00,Bairro Novo
+223,Pub da Praia Marco Zero,RECIFE,alto,1.0,18:55:30,Casa Forte
+224,Tapas Raiz Recife Antigo,Recife,medio,1.0,22:20:30,Graças
+225,Bistrô da Praia Madalena,Recife,medio,3.0,16:30:45,Casa Forte
+226,Pizzaria do Mar Capibaribe,Recife,baixo,4.0,21:35:30,Espinheiro
+227,Pizzaria do Mar Pina,São Lourenço da Mata,baixo,5.0,21:05:00,Centro
+228,Doceria Central Bairro Novo,RECIFE,baixo,2.0,19:15:30,Derby
+229,Pub Olinda da Vila,Garanhuns,baixo,0.0,14:25:00,Centro
+230,Pizzaria da Esquina Bongi,Jaboatão dos Guararapes,medio,0.0,20:45:30,Candeias
+231,Café do Mar Santo Amaro,Cabo de Santo Agostinho,medio,1.0,11:45:00,Garapu
+232,Pub Pernambuco da Vila,Olinda,alto,2.0,11:10:45,Bairro Novo
+233,Pub da Vila Poço,Olinda,alto,2.0,13:20:15,Rio Doce
+234,Restaurante Central Casa Forte,Olinda,medio,,22:00:00,Casa Caiada
+235,Pizzaria Madalena da Vila,Recife,medio,1.0,21:45:00,Graças
+236,Boteco Raiz Carmo,Paulista,alto,2.0,11:45:30,Pau Amarelo
+237,Bistrô Premium Iputinga,Recife,medio,1.0,19:00:45,Derby
+238,Pub da Praia Olinda,Recife,baixo,,21:10:15,Boa Viagem
+239,Boteco da Praia Poço,Jaboatão dos Guararapes,baixo,1.0,17:40:00,Candeias
+240,Sushi Saboroso Derby,Recife,baixo,1.0,21:20:15,Graças
+241,Bistrô Várzea Arretado,Goiana,alto,1.0,15:35:30,Centro
+242,Bar Madalena Central,Abreu e Lima,medio,2.0,13:40:30,Centro
+243,Bar Central Boa Viagem,Vitória de Santo Antão,baixo,0.0,22:55:15,Matriz
+244,Doceria Bongi Raiz,Recife,medio,1.0,20:35:00,Graças
+245,Bistrô Capibaribe da Praia,Recife,medio,1.0,16:50:15,Madalena
+246,Pub Rio Doce da Vila,Ipojuca,baixo,2.0,14:25:45,Porto de Galinhas
+247,Pizzaria Premium Dois Irmãos,Recife,baixo,2.0,18:45:15,Boa Viagem
+248,Hamburgueria Premium Várzea,São Lourenço da Mata,medio,1.0,09:55:45,Centro
+249,Tapas Bairro Novo Nordestino,Camaragibe,baixo,2.0,18:20:00,Centro
+250,Pizzaria Graças Central,Caruaru,medio,5.0,20:35:00,Centro
+251,Pizzaria Raiz Marco Zero,Recife,baixo,3.0,15:10:15,Graças
+252,Pizzaria da Esquina Derby,recife,medio,2.0,16:35:15,Casa Forte
+253,Pizzaria Saboroso Encruzilhada,Caruaru,medio,1.0,16:00:15,Maurício de Nassau
+254,Tapas Contemporâneo Bongi,Recife,medio,4.0,15:35:45,Graças
+255,Sushi do Mar Boa Vista,Recife,medio,1.0,20:50:45,Graças
+256,Cantina Santo Amaro Raiz,Olinda,baixo,3.0,18:50:00,Rio Doce
+257,Bistrô Arretado Pernambuco,Goiana,baixo,2.0,18:45:45,Centro
+258,Sushi do Mar Beberibe,Jaboatão dos Guararapes,baixo,2.0,17:25:45,Candeias
+259,Pizzaria Raiz Pina,Olinda,medio,0.0,11:50:00,Rio Doce
+260,Café da Esquina Iputinga,Recife,medio,1.0,20:10:30,Derby
+261,Pizzaria Central Poço,Olinda,medio,3.0,20:45:45,Bairro Novo
+262,Pub Bongi da Vila,Serra Talhada,baixo,2.0,13:30:30,Centro
+263,Cantina Rio Doce do Jardim,Recife,baixo,1.0,07:05:15,Madalena
+264,Café do Jardim Setúbal,Olinda,baixo,3.0,19:55:30,Rio Doce
+265,Pizzaria Arretado Encruzilhada,petrolina,baixo,3.0,11:50:00,Centro
+266,Tapas Cordeiro do Mar,Paulista,medio,2.0,16:35:30,Pau Amarelo
+267,Pizzaria do Jardim Derby,jaboatão dos guararapes,baixo,0.0,14:35:00,Candeias
+268,Boteco Contemporâneo Pernambuco,Jaboatão dos Guararapes,baixo,4.0,19:25:30,Piedade
+269,Hamburgueria Contemporâneo Cordeiro,Recife,alto,2.0,19:45:00,Casa Forte
+270,Bistrô Contemporâneo Torre,Recife,baixo,1.0,22:55:45,Casa Forte
+271,Pub Arretado Cordeiro,Cabo de Santo Agostinho,baixo,0.0,11:20:00,Centro
+272,Bistrô Parnamirim da Praia,Cabo de Santo Agostinho,medio,2.0,19:15:45,Garapu
+273,Pizzaria da Esquina Boa Vista,Petrolina,baixo,3.0,19:15:30,Areia Branca
+274,Bar do Mar Bairro Novo,VITÓRIA DE SANTO ANTÃO,medio,2.0,11:55:15,Matriz
+275,Bistrô Aflitos Saboroso,Olinda,medio,0.0,18:25:00,Casa Caiada
+276,Restaurante Setúbal Contemporâneo,Olinda,alto,2.0,09:35:30,Casa Caiada
+277,Bar da Esquina Derby,Cabo de Santo Agostinho,baixo,0.0,20:55:45,Garapu
+278,Café Capibaribe da Esquina,Jaboatão dos Guararapes,alto,2.0,17:15:00,Candeias
+279,Doceria da Praia Setúbal,JABOATÃO DOS GUARARAPES,baixo,,14:50:00,Piedade
+280,Pub Nordestino Cordeiro,Cabo de Santo Agostinho,baixo,0.0,13:10:30,Centro
+281,Boteco Nordestino Carmo,garanhuns,baixo,1.0,18:45:15,Centro
+282,Café da Vila Santo Amaro,Recife,alto,3.0,13:15:00,Derby
+283,Boteco do Jardim Dois Irmãos,Recife,baixo,0.0,10:40:30,Madalena
+284,Restaurante Marco Zero da Praia,RECIFE,baixo,2.0,15:50:45,Casa Forte
+285,Sushi Raiz Rio Doce,Olinda,medio,0.0,20:15:15,Casa Caiada
+286,Café da Esquina Parnamirim,RECIFE,baixo,0.0,10:10:00,Madalena
+287,Cantina Contemporâneo Beberibe,Olinda,baixo,2.0,22:35:45,Rio Doce
+288,Pub Olinda do Jardim,OLINDA,baixo,1.0,18:20:30,Bairro Novo
+289,Doceria Nordestino Poço,Recife,baixo,3.0,22:10:00,Casa Forte
+290,Boteco do Mar Espinheiro,Olinda,baixo,1.0,14:50:00,Rio Doce
+291,Doceria Premium Encruzilhada,Recife,baixo,1.0,13:25:30,Espinheiro
+292,Hamburgueria Premium Pernambuco,Recife,medio,,19:10:45,Boa Viagem
+293,Café Pina da Esquina,Igarassu,baixo,2.0,20:35:45,Centro
+294,Sushi Olinda do Jardim,Recife,baixo,2.0,16:55:45,Espinheiro
+295,Pub da Vila Iputinga,Recife,medio,0.0,16:55:15,Casa Forte
+296,Restaurante Saboroso Casa Forte,Olinda,baixo,1.0,12:20:45,Rio Doce
+297,Hamburgueria Central Graças,Paulista,medio,0.0,19:05:45,Pau Amarelo
+298,Pizzaria do Jardim Carmo,RECIFE,baixo,1.0,07:55:00,Espinheiro
+299,Hamburgueria Olinda da Vila,Jaboatão dos Guararapes,baixo,1.0,21:45:30,Piedade
+300,Hamburgueria Contemporâneo Encruzilhada,Recife,baixo,2.0,11:40:15,Derby
