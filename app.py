@@ -2,7 +2,10 @@
 # SEÇÃO 1 — CONFIGURAÇÃO DA PÁGINA
 # Deve ser sempre a primeira chamada Streamlit do arquivo.
 # ─────────────────────────────────────────────────────────────────────────────
+import os
 import streamlit as st
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 st.set_page_config(
     page_title="Esplori — Dashboard Estabelecimento de Restaurantes",
@@ -56,10 +59,10 @@ _OPCOES = [
 ]
 
 with st.sidebar:
-    st.image(
-        "assets/marca2-colorido.png",
-        use_container_width=True,
-    )
+    _logo_path = os.path.join(BASE_DIR, "utils", "assets", "marca2-colorido.png")
+    if os.path.exists(_logo_path):
+        with open(_logo_path, "rb") as _f:
+            st.image(_f.read(), use_container_width=True)
     st.markdown('<div class="sidebar-title">Dashboard para Estabelecimento de Restaurantes</div>', unsafe_allow_html=True)
     st.divider()
 

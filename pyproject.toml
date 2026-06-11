@@ -1,0 +1,21 @@
+[project]
+name = "esplori-dashboard"
+version = "1.0.0"
+description = "Dashboard para donos de restaurantes — Plataforma Esplori"
+requires-python = ">=3.10"
+dependencies = [
+    "streamlit>=1.32.0",
+    "plotly>=5.18.0",
+    "pandas>=2.0.0",
+]
+
+[project.urls]
+Repository = "https://github.com/carlalbuquerque/Esplori_dashboard"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = ["E501"]
