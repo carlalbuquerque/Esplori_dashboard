@@ -1,4 +1,4 @@
-# Explori Dashboard — Dashboard para Estabelecimentos
+# Explori Dashboard — Dashboard para Estabelecimentos 
 
 Painel Streamlit que transforma dados de check-ins, visualizações, saves e promoções em insights acionáveis para donos e gerentes de restaurantes na plataforma Explori.
 

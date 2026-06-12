@@ -62,7 +62,7 @@ with st.sidebar:
     if os.path.exists(_logo_path):
         with open(_logo_path, "rb") as _f:
             st.image(_f.read(), use_container_width=True)
-    st.markdown('<div class="sidebar-title">Dashboard para Estabelecimento de Restaurantes</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sidebar-title">Dashboard para Estabelecimentos Gastronômicos</div>', unsafe_allow_html=True)
     st.divider()
 
     for _op in _OPCOES:

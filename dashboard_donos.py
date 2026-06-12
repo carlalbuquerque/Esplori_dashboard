@@ -5,7 +5,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Esplori — Dashboard Estabelecimento de Restaurantes",
+    page_title="Esplori — Dashboard para Estabelecimentos Gastronômicos",
     page_icon="",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -63,7 +63,7 @@ with st.sidebar:
         "assets/marca2-colorido.png",
         use_container_width=True,
     )
-    st.markdown('<div class="sidebar-title">Dashboard para Estabelecimento de Restaurantes</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sidebar-title">Dashboard para Estabelecimentos Gastronômicos</div>', unsafe_allow_html=True)
     st.divider()
 
     for _op in _OPCOES:

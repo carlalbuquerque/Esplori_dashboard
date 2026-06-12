@@ -145,47 +145,6 @@ def render(dados: tuple, kpis: dict) -> None:
                     if cores[i] != COR_VERDE:
                         cores[i] = COR_SECUNDARIA
 
-                # barras horizontais — categorias no eixo Y, sem problema de leitura
-                df_volume_inv = df_volume.iloc[::-1].reset_index(drop=True)
-                cores_inv = cores[::-1]
-
-                fig_bar = go.Figure(go.Bar(
-                    x=df_volume_inv["Check-ins"],
-                    y=df_volume_inv["Categoria"],
-                    orientation="h",
-                    marker_color=cores_inv,
-                    text=df_volume_inv["Check-ins"],
-                    textposition="outside",
-                    textfont=dict(color=COR_TEXTO, size=13),
-                ))
-                altura_bar = max(400, n * 48)
-                fig_bar.update_traces(textfont=dict(color=COR_TEXTO, size=13))
-                fig_bar.update_layout(
-                    title=dict(text=f"Top {top_n} Categorias por Volume de Check-ins", font=dict(color=COR_TEXTO, size=16)),
-                    xaxis=dict(
-                        title="Nº de Check-ins",
-                        tickfont=dict(color=COR_TEXTO, size=12),
-                        title_font=dict(color=COR_TEXTO, size=14),
-                    ),
-                    yaxis=dict(
-                        title="",
-                        tickfont=dict(color=COR_TEXTO, size=13),
-                        automargin=True,
-                    ),
-                    plot_bgcolor=COR_FUNDO,
-                    paper_bgcolor=COR_FUNDO,
-                    font=dict(color=COR_TEXTO, size=12),
-                    height=altura_bar,
-                    margin=dict(t=60, b=40, l=200, r=80),
-                )
-                st.plotly_chart(fig_bar, use_container_width=True)
-                st.markdown(
-                    '<div class="insight-box"> <strong>Insight:</strong> '
-                    "Categorias em <strong>verde</strong> lideram (em alta). "
-                    "As em <strong>laranja escuro</strong> têm menor engajamento — avalie ações para aquecê-las.</div>",
-                    unsafe_allow_html=True,
-                )
-
                 # ── Heatmap top N por mês ─────────────────────────────
                 if meses_sel:
                     cats_top = df_volume["Categoria"].tolist()
@@ -256,7 +215,46 @@ def render(dados: tuple, kpis: dict) -> None:
                             "Acompanhe quais categorias crescem mês a mês para antecipar tendências.</div>",
                             unsafe_allow_html=True,
                         )
+                        # barras horizontais — categorias no eixo Y, sem problema de leitura
+                df_volume_inv = df_volume.iloc[::-1].reset_index(drop=True)
+                cores_inv = cores[::-1]
 
+                fig_bar = go.Figure(go.Bar(
+                    x=df_volume_inv["Check-ins"],
+                    y=df_volume_inv["Categoria"],
+                    orientation="h",
+                    marker_color=cores_inv,
+                    text=df_volume_inv["Check-ins"],
+                    textposition="outside",
+                    textfont=dict(color=COR_TEXTO, size=13),
+                ))
+                altura_bar = max(400, n * 48)
+                fig_bar.update_traces(textfont=dict(color=COR_TEXTO, size=13))
+                fig_bar.update_layout(
+                    title=dict(text=f"Top {top_n} Categorias por Volume de Check-ins", font=dict(color=COR_TEXTO, size=16)),
+                    xaxis=dict(
+                        title="Nº de Check-ins",
+                        tickfont=dict(color=COR_TEXTO, size=12),
+                        title_font=dict(color=COR_TEXTO, size=14),
+                    ),
+                    yaxis=dict(
+                        title="",
+                        tickfont=dict(color=COR_TEXTO, size=13),
+                        automargin=True,
+                    ),
+                    plot_bgcolor=COR_FUNDO,
+                    paper_bgcolor=COR_FUNDO,
+                    font=dict(color=COR_TEXTO, size=12),
+                    height=altura_bar,
+                    margin=dict(t=60, b=40, l=200, r=80),
+                )
+                st.plotly_chart(fig_bar, use_container_width=True)
+                st.markdown(
+                    '<div class="insight-box"> <strong>Insight:</strong> '
+                    "Categorias em <strong>verde</strong> lideram (em alta). "
+                    "As em <strong>laranja escuro</strong> têm menor engajamento — avalie ações para aquecê-las.</div>",
+                    unsafe_allow_html=True,
+                )
     st.divider()
 
     # ── Distribuição por faixa de gasto (concorrência) ───────────────

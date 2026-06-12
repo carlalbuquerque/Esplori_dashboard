@@ -1,8 +1,8 @@
 # ─── Paleta de Cores Explori ─────────────────────────────────────────────────
 COR_PRIMARIA   = "#E07A2F"
 COR_SECUNDARIA = "#B96A4A"
-COR_VERDE      = "#6B7A3A"
-COR_NEUTRO     = "#8A9450"
+COR_VERDE      = "#4E582B"  
+COR_NEUTRO     = "#ACB482"
 COR_FUNDO      = "#F9F5F0"
 COR_TEXTO      = "#1A1A1A"
 
