@@ -39,7 +39,10 @@ def carregar_dados():
         for root, _, files in os.walk(csv_dir):
             for fn in files:
                 if fn == name:
-                    return pd.read_csv(os.path.join(root, fn))
+                    df = pd.read_csv(os.path.join(root, fn))
+                    # remove aspas simples/duplas que alguns CSVs incluem nos cabeçalhos
+                    df.columns = df.columns.str.strip("'\"").str.strip()
+                    return df
         return pd.DataFrame()
 
     # ── 4. Carregar tabelas ─────────────────────────────────────────

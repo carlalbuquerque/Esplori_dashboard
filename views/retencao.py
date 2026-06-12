@@ -9,7 +9,7 @@ def render(dados: tuple, kpis: dict) -> None:
     retencao = kpis["retencao"]
 
     st.title("Retenção de Clientes")
-    st.caption("Quantos clientes voltam após a primeira visita ao seu restaurante?")
+    st.caption("Quantos clientes voltam após a primeira visita após uma indicação da plataforma Esplori?")
 
     if retencao.empty:
         st.warning("Dados de check-in insuficientes para calcular retenção.")

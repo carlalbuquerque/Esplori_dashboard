@@ -13,7 +13,7 @@ def render(dados: tuple, kpis: dict) -> None:
     }
 
     st.title("Desempenho de Promoções")
-    st.caption("Acompanhe o aproveitamento das suas promoções e o impacto no engajamento.")
+    st.caption("Acompanhe o aproveitamento de promoções e o impacto no engajamento.")
 
     if promocoes.empty:
         st.warning("Dados de promoções não disponíveis.")
@@ -148,14 +148,18 @@ def render(dados: tuple, kpis: dict) -> None:
                 title="Top 10 Promoções com Menor Aproveitamento (< 30%)",
                 labels={"Taxa de Uso (%)": "Taxa de Uso (%)", "Promoção": ""},
             )
-            fig_baixo.update_traces(texttemplate="%{text:.1f}%", textposition="outside")
+            fig_baixo.update_traces(
+                texttemplate="%{text:.1f}%",
+                textposition="outside",
+                textfont=dict(color=COR_TEXTO),
+            )
             fig_baixo.add_vline(x=30, line_dash="dash", line_color=COR_PRIMARIA, annotation_text="Limite 30%")
             fig_baixo.update_layout(
                 plot_bgcolor=COR_FUNDO,
                 paper_bgcolor=COR_FUNDO,
                 font=dict(color=COR_TEXTO),
-                xaxis=dict(range=[0, 40]),
-                yaxis=dict(autorange="reversed"),
+                xaxis=dict(range=[0, 40], tickfont=dict(color=COR_TEXTO)),
+                yaxis=dict(tickfont=dict(color=COR_TEXTO)),
             )
             st.plotly_chart(fig_baixo, use_container_width=True)
             st.markdown(

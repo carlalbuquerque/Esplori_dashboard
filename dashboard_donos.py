@@ -21,7 +21,7 @@ import views.engajamento    as tela_engajamento
 import views.perfil_publico as tela_perfil_publico
 import views.promocoes      as tela_promocoes
 import views.retencao       as tela_retencao
-import views.visao_geral    as tela_visao_geral
+# views.visao_geral removed from menu per request
 
 # ─────────────────────────────────────────────────────────────────────────────
 # SEÇÃO 3 — CSS CUSTOMIZADO
@@ -44,10 +44,13 @@ kpis = calcular_kpis(checkins, interacoes, promocoes)
 # SEÇÃO 5 — SIDEBAR
 # ─────────────────────────────────────────────────────────────────────────────
 if "pagina" not in st.session_state:
-    st.session_state["pagina"] = "Visão Geral"
+    st.session_state["pagina"] = "Perfil do Público"
+else:
+    # se uma sessão antiga ainda tiver 'Visão Geral', substitui pelo padrão novo
+    if st.session_state.get("pagina") == "Visão Geral":
+        st.session_state["pagina"] = "Perfil do Público"
 
 _OPCOES = [
-    "Visão Geral",
     "Perfil do Público",
     "Engajamento",
     "Retenção",
@@ -83,7 +86,6 @@ pagina = st.session_state["pagina"]
 # SEÇÃO 6 — ROTEAMENTO DE PÁGINAS
 # ─────────────────────────────────────────────────────────────────────────────
 _PAGINAS = {
-    "Visão Geral":       tela_visao_geral,
     "Perfil do Público": tela_perfil_publico,
     "Engajamento":       tela_engajamento,
     "Retenção":          tela_retencao,

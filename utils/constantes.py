@@ -4,7 +4,7 @@ COR_SECUNDARIA = "#B96A4A"
 COR_VERDE      = "#6B7A3A"
 COR_NEUTRO     = "#8A9450"
 COR_FUNDO      = "#F9F5F0"
-COR_TEXTO      = "#2D2D2D"
+COR_TEXTO      = "#1A1A1A"
 
 # ─── Benchmarks de Negócio ───────────────────────────────────────────────────
 BENCHMARK_CONVERSAO    = 0.35
@@ -19,12 +19,12 @@ CSS_CUSTOMIZADO = f"""
     .block-container {{ background-color: {COR_FUNDO}; padding-top: 4.5rem; }}
     h1, h2, h3 {{ color: {COR_TEXTO}; }}
     .insight-box {{
-        background: #FFF8F0;
+        background: white;
         border-left: 4px solid {COR_PRIMARIA};
         padding: 0.75rem 1rem;
         border-radius: 6px;
         font-size: 0.9rem;
-        color: #4A3728;
+        color: {COR_TEXTO};
         margin-top: 0.5rem;
         margin-bottom: 1rem;
     }}
@@ -44,7 +44,7 @@ CSS_CUSTOMIZADO = f"""
     }}
     .sidebar-footer {{
         font-size: 0.7rem;
-        color: #8A9450;
+        color: {COR_TEXTO};
         text-align: center;
         margin-top: 1rem;
         line-height: 1.5;

@@ -15,7 +15,7 @@ def render(dados: tuple, kpis: dict) -> None:
         )
 
     st.title("Perfil do Público")
-    st.caption("Entenda quem são os usuários que visualizam e visitam seu restaurante.")
+    st.caption("Entenda quem são os usuários que visualizam e visitam plataforma esplori.")
 
     if usuarios.empty:
         st.warning("Dados de usuários não disponíveis.")
@@ -95,7 +95,7 @@ def render(dados: tuple, kpis: dict) -> None:
     st.divider()
 
     # ── Origem geográfica ────────────────────────────────────────────
-    st.subheader("Top 10 Cidades de Origem")
+    st.subheader("Top 10 Cidades de Origem dos usuarios da plataforma esplori")
     df_cidades = (
         usuarios["origem_geografica"]
         .value_counts()
@@ -120,7 +120,7 @@ def render(dados: tuple, kpis: dict) -> None:
             plot_bgcolor=COR_FUNDO,
             paper_bgcolor=COR_FUNDO,
             font=dict(color=COR_TEXTO),
-            yaxis=dict(autorange="reversed"),
+            yaxis=dict(tickfont=dict(color=COR_TEXTO), autorange="reversed"),
         )
         st.plotly_chart(fig_cidades, use_container_width=True)
         st.markdown(
@@ -134,7 +134,7 @@ def render(dados: tuple, kpis: dict) -> None:
 
     # ── Top 10 Bairros ───────────────────────────────────────────────
     if "bairro" in usuarios.columns and "origem_geografica" in usuarios.columns:
-        st.subheader("Top 10 Bairros de Origem")
+        st.subheader("Top 10 Bairros dos usuarios da plataforma esplori")
 
         cidades = sorted(usuarios["origem_geografica"].dropna().str.title().unique())
         cidade_sel = st.selectbox(
@@ -174,7 +174,7 @@ def render(dados: tuple, kpis: dict) -> None:
                 plot_bgcolor=COR_FUNDO,
                 paper_bgcolor=COR_FUNDO,
                 font=dict(color=COR_TEXTO),
-                yaxis=dict(autorange="reversed"),
+                yaxis=dict(tickfont=dict(color=COR_TEXTO), autorange="reversed"),
             )
             st.plotly_chart(fig_bairros, use_container_width=True)
             st.markdown(
