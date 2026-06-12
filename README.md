@@ -2,6 +2,18 @@
 
 Painel Streamlit que transforma dados de check-ins, visualizações, saves e promoções em insights acionáveis para donos e gerentes de restaurantes na plataforma Explori.
 
+## Sumário do Repositório
+Breve mapa dos arquivos e pastas mais relevantes para revisão rápida:
+
+- `app.py` — Entrypoint atual do dashboard (configuração, carga de dados, sidebar e roteamento).
+- `dashboard_donos.py` — Entrypoint alternativo/legado (mantido para compatibilidade).
+- `views/` — Implementações das telas do dashboard (`perfil_publico.py`, `engajamento.py`, `retencao.py`, `promocoes.py`, `benchmarking.py`).
+- `utils/` — Utilitários e constantes (`dados.py`, `constantes.py`, `assets/`).
+- `data/extracted/` — Fonte de dados (CSV dentro do ZIP). Não versionar dados sensíveis.
+- `.github/` — Configurações de CI/agents/prompts e documentação de IA (`copilot-instructions.md`, `prompts/`, `agents/`).
+- `documento projeto/` — Documentos de arquitetura, contexto e análise exploratória.
+
+
 ## Visão geral
 - Aplicação: painel interativo com páginas para Perfil do Público, Engajamento, Retenção, Promoções e Benchmarking.
 - Tech: Python 3.10+, Streamlit, Pandas, Plotly.
