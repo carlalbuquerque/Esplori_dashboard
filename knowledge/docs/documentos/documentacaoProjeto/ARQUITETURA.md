@@ -1,308 +1,67 @@
 # Arquitetura do Projeto — Explori Dashboard
+# Arquitetura de Código — Explori Dashboard
 
-> **Versão:** 1.0 | **Data:** 2026-06-11  
-> Documento de referência de arquitetura para o dashboard Explori destinado a donos de restaurantes.
+**Objetivo:** documento enxuto e focado exclusivamente na organização e contratos do código fonte, pontos de extensão, fluxo de dados no código e responsabilidades de módulos.
 
----
-
-## 1. Visão Geral
-
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                        EXPLORI DASHBOARD                            │
-│              Dashboard para Donos de Restaurantes                   │
-│                    Região Metropolitana do Recife                   │
-└─────────────────────────────────────────────────────────────────────┘
-         │
-         │  streamlit run dashboard_donos.py
-         ▼
-┌────────────────────┐     ┌────────────────────┐
-│   CAMADA DE        │     │   CAMADA DE         │
-│   APRESENTAÇÃO     │◄────│   DADOS             │
-│   (Streamlit UI)   │     │   (Pandas + ZIP)    │
-└────────────────────┘     └────────────────────┘
-         │                          │
-         ▼                          ▼
-┌────────────────────┐     ┌────────────────────┐
-│   CAMADA DE        │     │   CAMADA DE         │
-│   VISUALIZAÇÃO     │     │   PIPELINE          │
-│   (Plotly)         │     │   (Tratamento)      │
-└────────────────────┘     └────────────────────┘
-```
+**Versão:** 1.1 | **Data:** 2026-06-12
 
 ---
 
-## 2. Stack Tecnológica
+## Visão geral (apenas código)
 
-```
-┌──────────────────────────────────────────────────────────┐
-│  RUNTIME                                                  │
-│  Python 3.10+                                            │
-├──────────────────────────────────────────────────────────┤
-│  FRAMEWORK WEB          │  VISUALIZAÇÃO                  │
-│  Streamlit ≥ 1.32.0     │  Plotly Express ≥ 5.18.0      │
-│                         │  Plotly Graph Objects           │
-├──────────────────────────────────────────────────────────┤
-│  MANIPULAÇÃO DE DADOS   │  ARMAZENAMENTO                 │
-│  Pandas ≥ 2.0.0         │  CSV dentro de ZIP local       │
-├──────────────────────────────────────────────────────────┤
-│  PROIBIDO NO DASHBOARD                                   │
-│  ❌ matplotlib   ❌ banco de dados   ❌ APIs externas    │
-└──────────────────────────────────────────────────────────┘
-```
+- Entrada do app: `app.py` ou `dashboard_donos.py` — contêm a configuração da página (`st.set_page_config`), carregam CSS e roteiam para os módulos de view via `render(dados, kpis)`.
+- Funções de carga e processamento: `utils/dados.py` (função pública `carregar_dados()` e `calcular_kpis()`).
+- Constantes e temas: `utils/constantes.py` (cores, benchmarks, `CSS_CUSTOMIZADO`).
+- Views (cada tela é um módulo com `render(dados, kpis)`): `views/perfil_publico.py`, `views/engajamento.py`, `views/retencao.py`, `views/promocoes.py`, `views/benchmarking.py`.
 
----
+## Módulos e responsabilidades
 
-## 3. Estrutura de Arquivos
+- `app.py` / `dashboard_donos.py`:
+        - Inicializa sessão Streamlit e `st.session_state` para `pagina`.
+        - Monta `sidebar` com navegação e filtros globais.
+        - Chama `_PAGINAS[pagina].render(dados, kpis)`.
 
-```
-Explori_dashboard/
-│
-├── dashboard_donos.py              ← Entrypoint único da aplicação
-├── requirements.txt                ← Dependências fixadas com versão
-├── README.md
-│
-├── data/
-│   └── dataset_eda_ficticio.zip   ← Fonte de dados — NUNCA descompactar
-│       ├── usuarios.csv            (~5.673 registros pós-limpeza)
-│       ├── estabelecimentos.csv
-│       ├── categorias.csv
-│       ├── estabelecimento_categoria.csv
-│       ├── checkins.csv            (~8.000+ registros válidos)
-│       ├── interacoes.csv          (~20.002 registros)
-│       └── promocoes.csv
-│
-├── documento projeto/
-│   ├── colab/
-│   │   └── analise_dados_esplori_2025_2026.py   ← Análise exploratória (referência)
-│   └── documentos/
-│       ├── ARQUITETURA.md                        ← Este arquivo
-│       ├── CONSTITUICAO_PROJETO.md               ← 9 regras invioláveis
-│       ├── CONTEXTO_DASHBOARD_DONOS.md           ← Contexto completo do produto
-│       └── specs/                                ← Specs geradas via prompt
-│
-└── .github/
-    ├── copilot-instructions.md      ← Convenções globais (carregadas automaticamente)
-    ├── instructions/
-    │   └── explori-dashboard.instructions.md    (applyTo: **/*.py)
-    ├── agents/
-    │   ├── dashboard-builder.agent.md
-    │   ├── data-analyst.agent.md
-    │   └── security-reviewer.agent.md
-    ├── skills/
-    │   ├── dataset-schema.md        (alwaysApply: true)
-    │   ├── insights-estrategicos.md (alwaysApply: true)
-    │   ├── plotly-patterns.md       (applyTo: **/*.py)
-    │   └── data-pipeline.md         (applyTo: **/*.py)
-    └── prompts/
-        ├── nova-tela-dashboard.prompt.md
-        ├── gerar-insight-kpi.prompt.md
-        ├── revisar-codigo.prompt.md
-        ├── converter-matplotlib-plotly.prompt.md
-        ├── diagnosticar-erro.prompt.md
-        ├── requisito-para-spec.prompt.md
-        ├── spec-para-plano.prompt.md
-        ├── plano-para-tarefas.prompt.md
-        └── executar-tarefa.prompt.md
-```
+- `utils/dados.py`:
+        - `carregar_dados()` — procura ZIP em `data/`, extrai para `data/extracted/` (protegendo contra path traversal), lê CSVs e faz limpeza (idade, gênero, tipos, duplicatas). Marcada com `@st.cache_data`.
+        - `calcular_kpis(checkins, interacoes, promocoes)` — retorna dicionário com métricas usadas pelas views.
+
+- `utils/constantes.py`:
+        - Declara paleta, benchmarks canônicos e `CSS_CUSTOMIZADO` usado pelo app.
+
+- `views/*.py`:
+        - Cada arquivo exporta `render(dados: tuple, kpis: dict) -> None`.
+        - Responsabilidade de cada view: filtrar dados necessários, construir gráficos Plotly (px/go), exibir `st.metric()` e `insight-box` com `st.markdown(..., unsafe_allow_html=True)`.
+
+## Contratos entre módulos
+
+- `carregar_dados()` → retorna tuple: `(usuarios, estab, categorias, estab_cat, checkins, interacoes, promocoes)`.
+- `calcular_kpis(checkins, interacoes, promocoes)` → dicionário com chaves: `total_views`, `total_saves`, `total_shares`, `total_checkins`, `taxa_conversao`, `taxa_save`, `taxa_compartilhar`, `taxa_retencao`, `taxa_uso_promo`, `retencao`.
+- `render(dados, kpis)` nos `views` espera a tupla de dataframes e o dicionário de KPIs.
+
+## Fluxo de dados (no código)
+
+1. `app.py` chama `carregar_dados()`.
+2. `carregar_dados()` extrai/ler CSVs, limpa e retorna os DataFrames.
+3. `app.py` chama `calcular_kpis()` e obtém `kpis`.
+4. `app.py` roteia para o `render()` da view ativa, passando `dados` e `kpis`.
+5. Views fazem merges/aggregations locais conforme necessário e exibem gráficos.
+
+## Padrões e boas práticas observadas
+
+- Views são idempotentes: recebem dados limpos e não alteram a fonte.
+- Uso consistente de `@st.cache_data` para evitar recálculo caro.
+- Uso consolidado de `utils/constantes.py` para paleta e benchmarks — facilita mudanças globais.
+- Gráficos sempre atualizam layout com `plot_bgcolor`/`paper_bgcolor` e `font=dict(color=...)`.
+
+## Pontos de extensão e melhorias (rápidas)
+
+- Extrair um `router` simples para evitar duplicação entre `app.py` e `dashboard_donos.py`.
+- Encapsular cálculos de métricas por entidade em `utils/metrics.py` para facilitar testes unitários.
+- Adicionar typing mais estrito (`TypedDict` para `kpis`, `Protocol` para views) para melhorar legibilidade e testes.
 
 ---
 
-## 4. Arquitetura do `dashboard_donos.py`
-
-O arquivo principal segue uma **estrutura linear de 6 seções obrigatórias**, sempre na mesma ordem:
-
-```
-dashboard_donos.py
-│
-├── SEÇÃO 1 — CONFIGURAÇÃO DA PÁGINA
-│   └── st.set_page_config(...)        ← SEMPRE a primeira linha executável
-│
-├── SEÇÃO 2 — PALETA DE CORES
-│   ├── COR_PRIMARIA   = "#E07A2F"
-│   ├── COR_SECUNDARIA = "#B96A4A"
-│   ├── COR_VERDE      = "#6B7A3A"
-│   ├── COR_NEUTRO     = "#8A9450"
-│   ├── COR_FUNDO      = "#F9F5F0"
-│   └── COR_TEXTO      = "#2D2D2D"
-│
-├── SEÇÃO 3 — CSS CUSTOMIZADO
-│   └── st.markdown(<style>...</style>, unsafe_allow_html=True)
-│
-├── SEÇÃO 4 — CARGA DE DADOS
-│   └── @st.cache_data
-│       def carregar_dados() -> dict[str, pd.DataFrame]
-│           EXTRACT  → abrir ZIP (com proteção path traversal)
-│           CLEAN    → tratar nulos, tipos, duplicatas
-│           VALIDATE → asserts de range e completude
-│           DERIVE   → faixa_etaria, hora, taxa_uso
-│           RETURN   → dict com todos os DataFrames prontos
-│
-├── SEÇÃO 5 — SIDEBAR (Navegação + Filtros globais)
-│   ├── Logo / nome do produto
-│   ├── st.radio / st.selectbox → variável `pagina`
-│   └── Filtros globais (período, categoria, faixa de gasto)
-│
-└── SEÇÃO 6 — PÁGINAS (um bloco if/elif por página)
-    ├── if pagina == "🏠 Visão Geral":
-    ├── elif pagina == "👥 Perfil do Público":
-    ├── elif pagina == "📈 Engajamento":
-    ├── elif pagina == "🔄 Retenção":
-    ├── elif pagina == "🎯 Promoções":
-    └── elif pagina == "🏆 Benchmarking":
-```
-
----
-
-## 5. Modelo de Dados
-
-### 5.1 Diagrama Entidade-Relacionamento
-
-```
-usuarios
-├── id_usuario (PK)
-├── idade
-├── genero
-├── origem_geografica
-├── horario_maior_busca
-└── efetuou_checkin
-        │
-        │ 1:N
-        ▼
-checkins                    estabelecimentos
-├── id_checkin (PK)         ├── id_estabelecimento (PK)
-├── id_usuario (FK) ────────┤  ├── nome_estabelecimento
-├── id_estabelecimento (FK)─┘  ├── origem_geografica
-├── id_categoria (FK)──────┐   ├── faixa_de_gasto
-├── data_hora_checkin       │   └── criacao_promocoes
-├── faixa_gasto             │           │
-└── usou_voucher            │           │ 1:N
-                            │           ▼
-interacoes                  │   promocoes
-├── id_usuario (FK)         │   ├── id_promocao (PK)
-├── id_estabelecimento (FK) │   ├── id_estabelecimento (FK)
-├── visualizacoes_perfil    │   ├── tipo_promocao
-├── saves_favoritos         │   ├── quantidade_disponibilizada
-├── compartilhamentos       │   └── quantidade_utilizada
-└── data_hora_interacao     │
-                            ▼
-                        categorias
-                        ├── id_categoria (PK)
-                        └── nome_categoria
-                                │
-                        estabelecimento_categoria
-                        ├── id_estabelecimento (FK)
-                        └── id_categoria (FK)
-```
-
-### 5.2 Volumes de Dados (pós-limpeza)
-
-| Tabela | Linhas esperadas | Observação |
-|--------|-----------------|-----------|
-| `usuarios` | ~5.673 | Após `dropna()` em `idade` + filtro 18-65 |
-| `estabelecimentos` | ~N/A | Todos os cadastrados na plataforma |
-| `checkins` | ~8.000+ | Apenas `efetuou_checkin == True` |
-| `interacoes` | ~20.002 | Após `.fillna(0)` nas métricas |
-| `promocoes` | ~N/A | Dataset completo |
-
----
-
-## 6. Fluxo de Dados
-
-```
-data/dataset_eda_ficticio.zip
-         │
-         │ zipfile.ZipFile (read-only, path traversal protegido)
-         ▼
-  pd.read_csv() × 6 tabelas
-         │
-         ▼
-  ┌─────────────────────────────────────────┐
-  │  PIPELINE DE LIMPEZA (@st.cache_data)   │
-  │                                         │
-  │  1. EXTRACT  — ler CSVs do ZIP          │
-  │  2. CLEAN    — nulos, tipos, dupes      │
-  │  3. VALIDATE — asserts de qualidade     │
-  │  4. DERIVE   — colunas calculadas       │
-  │  5. RETURN   — dict de DataFrames       │
-  └─────────────────────────────────────────┘
-         │
-         │ dict["usuarios"], dict["checkins"], ...
-         ▼
-  ┌─────────────────────────────────────────┐
-  │  CÁLCULO DE KPIs (por página)           │
-  │                                         │
-  │  taxa_conversao = checkins / views      │
-  │  taxa_save = saves / views              │
-  │  taxa_retencao = (≥2 checkins) / total  │
-  │  taxa_uso_promo = util / disp           │
-  └─────────────────────────────────────────┘
-         │
-         ▼
-  ┌─────────────────────────────────────────┐
-  │  RENDERIZAÇÃO (Streamlit + Plotly)      │
-  │                                         │
-  │  st.metric()  → cards de KPI           │
-  │  px.*() / go.*() → gráficos            │
-  │  insight-box  → análise contextual     │
-  └─────────────────────────────────────────┘
-```
-
----
-
-## 7. Páginas do Dashboard
-
-| # | Página | Ícone | Tabelas Principais | KPIs-chave |
-|---|--------|-------|--------------------|-----------|
-| 1 | Visão Geral | 🏠 | todas | conversão, save, retenção, promo |
-| 2 | Perfil do Público | 👥 | usuarios | faixa etária, gênero, origem, horário |
-| 3 | Engajamento | 📈 | interacoes, checkins | funil, taxa conversão, taxa save |
-| 4 | Retenção | 🔄 | checkins, usuarios | % 1 visita, recorrentes, fiéis |
-| 5 | Promoções | 🎯 | promocoes, checkins | taxa uso, impacto voucher |
-| 6 | Benchmarking | 🏆 | todas | comparativo plataforma |
-
----
-
-## 8. Sistema Copilot (`.github/`)
-
-O projeto usa GitHub Copilot com configuração em 5 camadas:
-
-```
-CAMADA 1 — copilot-instructions.md
-  Regras globais carregadas automaticamente em todo contexto.
-  Paleta, stack, nomenclatura, KPIs canônicos.
-        │
-        ▼
-CAMADA 2 — instructions/explori-dashboard.instructions.md
-  Regras específicas para arquivos *.py.
-  Schema completo, estrutura Streamlit, padrões de gráfico.
-        │
-        ▼
-CAMADA 3 — agents/ (3 agentes especializados)
-  @dashboard-builder → constrói telas e gráficos
-  @data-analyst      → analisa KPIs e gera insights
-  @security-reviewer → verifica LGPD e segurança
-        │
-        ▼
-CAMADA 4 — skills/ (4 skills com conhecimento de domínio)
-  dataset-schema.md      (alwaysApply) → schema das 6 tabelas
-  insights-estrategicos.md (alwaysApply) → 7 insights confirmados
-  plotly-patterns.md     (*.py) → templates de gráficos
-  data-pipeline.md       (*.py) → pipeline canônico
-        │
-        ▼
-CAMADA 5 — prompts/ (9 prompt templates com variáveis)
-  Fluxo de desenvolvimento:
-  requisito-para-spec → spec-para-plano → plano-para-tarefas → executar-tarefa
-  Utilitários:
-  nova-tela-dashboard | gerar-insight-kpi | revisar-codigo
-  converter-matplotlib-plotly | diagnosticar-erro
-```
-
----
-
-## 9. Fluxo de Desenvolvimento (Workflow Completo)
-
+Arquivo focado em código pronto — se quiser, aplico tipagens e extraio `utils/metrics.py` agora.
 ```
 REQUISITO DE NEGÓCIO
         │

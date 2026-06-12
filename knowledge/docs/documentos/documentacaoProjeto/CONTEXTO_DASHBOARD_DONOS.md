@@ -1,5 +1,7 @@
 # Contexto do Dashboard Explori — Visão para Donos de Restaurantes
 
+**Atualizado:** 2026-06-12 — alinhado com as configurações do projeto (requirements, pyproject)
+
 ## 1. Visão Geral do Produto
 
 A **Explori** é uma plataforma de descoberta de experiências gastronômicas e de lazer focada inicialmente na Região Metropolitana do Recife (RMR) e no interior de Pernambuco. O produto conecta usuários a estabelecimentos (restaurantes, bares, casas de show, etc.) por meio de check-ins, visualizações de perfil, saves e compartilhamentos.
@@ -107,6 +109,16 @@ As tabelas abaixo foram analisadas e sustentam todos os indicadores do dashboard
 └─────────────┴───────────────────────────────────────────┘
 ```
 
+O dashboard atual implementa as seguintes telas e arquivos correspondentes (código):
+
+- **Perfil do Público**: [views/perfil_publico.py](views/perfil_publico.py#L1) — análise demográfica, horários e cidades.
+- **Engajamento**: [views/engajamento.py](views/engajamento.py#L1) — funil de engajamento, métricas por faixa de gasto.
+- **Retenção**: [views/retencao.py](views/retencao.py#L1) — distribuição de check-ins por usuário e retenção por faixa etária.
+- **Promoções**: [views/promocoes.py](views/promocoes.py#L1) — taxa de uso de promoções, impacto de vouchers.
+- **Benchmarking**: [views/benchmarking.py](views/benchmarking.py#L1) — comparação por categoria (arquivo presente em `views/`).
+
+A navegação é controlada por `app.py` (ou `dashboard_donos.py`) que monta a `sidebar` e roteia para `render(dados, kpis)` nas telas.
+
 ### Tela 1 — Resumo Executivo
 - 4 cards de KPI: Visualizações | Check-ins | Taxa de Conversão | Novos Clientes
 - Gráfico de linha: evolução semanal/mensal de check-ins
@@ -158,11 +170,18 @@ Baseado na identidade visual já utilizada na análise exploratória:
 
 | Componente | Tecnologia | Justificativa |
 |-----------|-----------|--------------|
-| Framework web | **Streamlit** | Já no stack do projeto (Aula 11), rápido para MVP |
-| Gráficos | **Plotly Express** | Interatividade nativa, compatível com Streamlit |
-| Dados | **Pandas** | Já utilizado na análise exploratória |
+| Framework web | **Streamlit >=1.32.0** | Versão exigida em `requirements.txt`/`pyproject.toml` |
+| Gráficos | **Plotly >=5.18.0** | Versão exigida em `requirements.txt`/`pyproject.toml` |
+| Dados | **Pandas >=2.0.0** | Versão exigida em `requirements.txt`/`pyproject.toml` |
 | Mapas | **Plotly Choropleth** ou **Folium** | Visualização geográfica de Pernambuco |
 | Estilo | CSS customizado via `st.markdown` | Aplicar identidade Explori |
+
+Observações de implementação:
+- O carregamento de dados usa `@st.cache_data` em `utils/dados.py::carregar_dados()` para cachear artefatos pesados.
+- O pipeline procura por um ZIP em `data/` e extrai para `data/extracted/` (com verificação anti path-traversal).
+- Arquivos CSV também são lidos diretamente de `data/extracted/` quando presentes.
+
+Nota: o projeto usa `pyproject.toml` com o nome `esplori-dashboard` (com "s") enquanto a identidade textual no dashboard usa "Explori" — sugiro padronizar o nome do projeto para `explori` para evitar confusão.
 
 ---
 
@@ -198,7 +217,7 @@ Estes insights, derivados da análise exploratória, devem aparecer no dashboard
          │
          ▼
   [ETL / Pandas]
-  ├── usuarios.csv
+       ├── usuarios.csv
   ├── estabelecimentos.csv
   ├── categorias.csv
   ├── checkins.csv
@@ -206,11 +225,13 @@ Estes insights, derivados da análise exploratória, devem aparecer no dashboard
   └── promocoes.csv
          │
          ▼
-  [Processamento]
-  ├── Cálculo de KPIs
-  ├── Agregações por estabelecimento
-  ├── Filtros dinâmicos
-  └── Geração de insights
+        [Processamento]
+       ├── Extração segura do ZIP para `data/extracted/` (verificação de path traversal)
+       ├── Limpeza e normalização aplicada em `utils/dados.py` (idade, gênero, datas)
+       ├── Cálculo de KPIs em `utils/dados.py::calcular_kpis()`
+       ├── Cache dos dados com `@st.cache_data`
+       ├── Agregações por estabelecimento e por faixa etária
+       └── Geração de insights embedados nas telas (insight-box)
          │
          ▼
   [Streamlit Dashboard]
