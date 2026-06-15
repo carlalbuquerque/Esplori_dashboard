@@ -267,7 +267,7 @@ def render(dados: tuple, kpis: dict) -> None:
                 df_faixa_estab,
                 x="Faixa de Gasto",
                 y="Restaurantes",
-                color_discrete_sequence=[COR_SECUNDARIA, COR_NEUTRO, COR_TEXTO],
+                color_discrete_sequence=[COR_VERDE, COR_NEUTRO, COR_TEXTO],
                 text="Restaurantes",
                 title="Concorrência por Faixa de Gasto na Plataforma",
                 labels={
@@ -275,11 +275,23 @@ def render(dados: tuple, kpis: dict) -> None:
                     "Restaurantes": "Nº de Restaurantes",
                 },
             )
-            fig_faixa_estab.update_traces(textposition="outside")
+            fig_faixa_estab.update_traces(textposition="outside", textfont=dict(color=COR_TEXTO, size=10))
             fig_faixa_estab.update_layout(
+                title=dict(text="Concorrência por Faixa de Gasto na Plataforma", font=dict(color=COR_TEXTO, size=16)),
+                xaxis=dict(
+                    title="Faixa de Gasto",
+                    tickfont=dict(color=COR_TEXTO, size=12),
+                    title_font=dict(color=COR_TEXTO, size=14),
+                ),
+                yaxis=dict(
+                    title="Nº de Restaurantes",
+                    tickfont=dict(color=COR_TEXTO, size=13),
+                    title_font=dict(color=COR_TEXTO, size=14),
+                ),
                 plot_bgcolor=COR_FUNDO,
                 paper_bgcolor=COR_FUNDO,
-                font=dict(color="#1A1A1A", size=14),
+                font=dict(color=COR_TEXTO, size=12),
+                height=max(400, len(df_faixa_estab) * 48),
             )
             st.plotly_chart(fig_faixa_estab, use_container_width=True)
             st.markdown(

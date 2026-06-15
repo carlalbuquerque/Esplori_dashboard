@@ -53,11 +53,14 @@ def render(dados: tuple, kpis: dict) -> None:
                 title="Faixa Etária dos Usuários por Gênero",
                 labels={"Faixa Etária": "Faixa Etária", "Usuários": "Quantidade"},
             )
-            fig_faixa.update_traces(textposition="outside")
+            fig_faixa.update_traces(textposition="outside", textfont=dict(color=COR_TEXTO, size=13))
             fig_faixa.update_layout(
+                title=dict(text="Faixa Etária dos Usuários por Gênero", font=dict(color=COR_TEXTO, size=16)),
+                xaxis=dict(title="Faixa Etária", tickfont=dict(color=COR_TEXTO, size=12), title_font=dict(color=COR_TEXTO, size=14)),
+                yaxis=dict(title="Quantidade", tickfont=dict(color=COR_TEXTO, size=12), title_font=dict(color=COR_TEXTO, size=14)),
                 plot_bgcolor=COR_FUNDO,
                 paper_bgcolor=COR_FUNDO,
-                font=dict(color=COR_TEXTO),
+                font=dict(color=COR_TEXTO, size=12),
             )
             st.plotly_chart(fig_faixa, use_container_width=True)
             st.markdown(
@@ -86,9 +89,11 @@ def render(dados: tuple, kpis: dict) -> None:
                 hole=0.45,
                 title="Gênero dos Usuários",
             )
+            fig_genero.update_traces(textfont=dict(color=COR_TEXTO, size=13))
             fig_genero.update_layout(
+                title=dict(text="Gênero dos Usuários", font=dict(color=COR_TEXTO, size=16)),
                 paper_bgcolor=COR_FUNDO,
-                font=dict(color=COR_TEXTO),
+                font=dict(color=COR_TEXTO, size=12),
             )
             st.plotly_chart(fig_genero, use_container_width=True)
 
@@ -115,12 +120,14 @@ def render(dados: tuple, kpis: dict) -> None:
             title="Cidades de Origem — Top 10",
             labels={"Usuários": "Quantidade", "Cidade": ""},
         )
-        fig_cidades.update_traces(textposition="outside")
+        fig_cidades.update_traces(textposition="outside", textfont=dict(color=COR_TEXTO, size=13))
         fig_cidades.update_layout(
+            title=dict(text="Cidades de Origem — Top 10", font=dict(color=COR_TEXTO, size=16)),
+            xaxis=dict(title="Quantidade", tickfont=dict(color=COR_TEXTO, size=12), title_font=dict(color=COR_TEXTO, size=14)),
+            yaxis=dict(tickfont=dict(color=COR_TEXTO, size=13), title_font=dict(color=COR_TEXTO, size=14), autorange="reversed"),
             plot_bgcolor=COR_FUNDO,
             paper_bgcolor=COR_FUNDO,
-            font=dict(color=COR_TEXTO),
-            yaxis=dict(tickfont=dict(color=COR_TEXTO), autorange="reversed"),
+            font=dict(color=COR_TEXTO, size=12),
         )
         st.plotly_chart(fig_cidades, use_container_width=True)
         st.markdown(
@@ -169,12 +176,14 @@ def render(dados: tuple, kpis: dict) -> None:
                 title=f"Top 10 Bairros — {cidade_sel}",
                 labels={"Usuários": "Quantidade", "Bairro": ""},
             )
-            fig_bairros.update_traces(textposition="outside")
+            fig_bairros.update_traces(textposition="outside", textfont=dict(color=COR_TEXTO, size=13))
             fig_bairros.update_layout(
+                title=dict(text=f"Top 10 Bairros — {cidade_sel}", font=dict(color=COR_TEXTO, size=16)),
+                xaxis=dict(title="Quantidade", tickfont=dict(color=COR_TEXTO, size=12), title_font=dict(color=COR_TEXTO, size=14)),
+                yaxis=dict(tickfont=dict(color=COR_TEXTO, size=13), title_font=dict(color=COR_TEXTO, size=14), autorange="reversed"),
                 plot_bgcolor=COR_FUNDO,
                 paper_bgcolor=COR_FUNDO,
-                font=dict(color=COR_TEXTO),
-                yaxis=dict(tickfont=dict(color=COR_TEXTO), autorange="reversed"),
+                font=dict(color=COR_TEXTO, size=12),
             )
             st.plotly_chart(fig_bairros, use_container_width=True)
             st.markdown(
@@ -208,12 +217,14 @@ def render(dados: tuple, kpis: dict) -> None:
                 title="Distribuição de Buscas por Hora do Dia",
                 labels={"Hora": "Hora do Dia", "Usuários": "Quantidade de Buscas"},
             )
-            fig_hora.update_traces(textposition="outside")
+            fig_hora.update_traces(textposition="outside", textfont=dict(color=COR_TEXTO, size=13))
             fig_hora.update_layout(
+                title=dict(text="Distribuição de Buscas por Hora do Dia", font=dict(color=COR_TEXTO, size=16)),
+                xaxis=dict(title="Hora do Dia", dtick=1, tickfont=dict(color=COR_TEXTO, size=12), title_font=dict(color=COR_TEXTO, size=14)),
+                yaxis=dict(title="Quantidade de Buscas", tickfont=dict(color=COR_TEXTO, size=12), title_font=dict(color=COR_TEXTO, size=14)),
                 plot_bgcolor=COR_FUNDO,
                 paper_bgcolor=COR_FUNDO,
-                font=dict(color=COR_TEXTO),
-                xaxis=dict(dtick=1),
+                font=dict(color=COR_TEXTO, size=12),
             )
             st.plotly_chart(fig_hora, use_container_width=True)
             st.markdown(

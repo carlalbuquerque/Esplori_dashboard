@@ -66,9 +66,12 @@ def render(dados: tuple, kpis: dict) -> None:
                 labels={"usou_voucher": "Tipo", "Check-ins": "Quantidade de Check-ins", "Mês": "Mês"},
             )
             fig_mes.update_layout(
+                title=dict(text="Check-ins com e sem Voucher por Mês", font=dict(color=COR_TEXTO, size=16)),
+                xaxis=dict(title="Mês", tickfont=dict(color=COR_TEXTO, size=12), title_font=dict(color=COR_TEXTO, size=14)),
+                yaxis=dict(title="Quantidade de Check-ins", tickfont=dict(color=COR_TEXTO, size=12), title_font=dict(color=COR_TEXTO, size=14)),
                 plot_bgcolor=COR_FUNDO,
                 paper_bgcolor=COR_FUNDO,
-                font=dict(color=COR_TEXTO),
+                font=dict(color=COR_TEXTO, size=12),
             )
             st.plotly_chart(fig_mes, use_container_width=True)
             st.markdown(
@@ -97,14 +100,16 @@ def render(dados: tuple, kpis: dict) -> None:
                 names="Tipo",
                 values="Check-ins",
                 color="Tipo",
-                color_discrete_map={"Com Voucher": COR_VERDE, "Sem Voucher": COR_SECUNDARIA},
+                color_discrete_map={"Com Voucher": COR_VERDE, "Sem Voucher": COR_PRIMARIA},
                 hole=0.45,
                 title="Check-ins com e sem Voucher",
             )
-            fig_voucher.update_traces(textinfo="percent+value", textposition="outside")
+            fig_voucher.update_traces(textinfo="percent+value", textposition="outside", textfont=dict(color=COR_TEXTO, size=13))
             fig_voucher.update_layout(
+                title=dict(text="Check-ins com e sem Voucher", font=dict(color=COR_TEXTO, size=16)),
                 paper_bgcolor=COR_FUNDO,
-                font=dict(color=COR_TEXTO),
+                font=dict(color=COR_TEXTO, size=12),
+                height=420,
             )
             st.plotly_chart(fig_voucher, use_container_width=True)
             st.markdown(
@@ -151,15 +156,17 @@ def render(dados: tuple, kpis: dict) -> None:
             fig_baixo.update_traces(
                 texttemplate="%{text:.1f}%",
                 textposition="outside",
-                textfont=dict(color=COR_TEXTO),
+                textfont=dict(color=COR_TEXTO, size=13),
             )
             fig_baixo.add_vline(x=30, line_dash="dash", line_color=COR_PRIMARIA, annotation_text="Limite 30%")
             fig_baixo.update_layout(
+                title=dict(text="Top 10 Promoções com Menor Aproveitamento (< 30%)", font=dict(color=COR_TEXTO, size=16)),
                 plot_bgcolor=COR_FUNDO,
                 paper_bgcolor=COR_FUNDO,
-                font=dict(color=COR_TEXTO),
-                xaxis=dict(range=[0, 40], tickfont=dict(color=COR_TEXTO)),
-                yaxis=dict(tickfont=dict(color=COR_TEXTO)),
+                font=dict(color=COR_TEXTO, size=12),
+                xaxis=dict(range=[0, 40], tickfont=dict(color=COR_TEXTO, size=12), title_font=dict(color=COR_TEXTO, size=14)),
+                yaxis=dict(tickfont=dict(color=COR_TEXTO, size=13)),
+                height=max(400, len(df_baixo) * 48),
             )
             st.plotly_chart(fig_baixo, use_container_width=True)
             st.markdown(

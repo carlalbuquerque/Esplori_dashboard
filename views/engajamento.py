@@ -52,12 +52,15 @@ def render(dados: tuple, kpis: dict) -> None:
             y=["Visualizações", "Saves", "Compartilhamentos", "Check-ins"],
             x=[kpis["total_views"], kpis["total_saves"], kpis["total_shares"], kpis["total_checkins"]],
             textinfo="value+percent initial",
-            marker=dict(color=[COR_PRIMARIA, COR_SECUNDARIA, COR_NEUTRO, COR_VERDE]),
+            textfont=dict(color=COR_TEXTO, size=13),
+            insidetextfont=dict(color=COR_TEXTO, size=13),
+            outsidetextfont=dict(color=COR_TEXTO, size=13),
+            marker=dict(color=[COR_SECUNDARIA,COR_PRIMARIA,COR_NEUTRO,COR_VERDE]),
         ))
         fig_funil.update_layout(
-            title="Funil completo — visualizações até check-in",
+            title=dict(text="Funil completo — visualizações até check-in", font=dict(color=COR_TEXTO, size=16)),
             paper_bgcolor=COR_FUNDO,
-            font=dict(color=COR_TEXTO),
+            font=dict(color=COR_TEXTO, size=12),
         )
         st.plotly_chart(fig_funil, use_container_width=True)
         st.markdown(
@@ -118,9 +121,13 @@ def render(dados: tuple, kpis: dict) -> None:
                     },
                 )
                 fig_faixa.update_layout(
+                    title=dict(text="Engajamento Médio por Faixa de Gasto", font=dict(color=COR_TEXTO, size=16)),
+                    xaxis=dict(title="Faixa de Gasto", tickfont=dict(color=COR_TEXTO, size=12), title_font=dict(color=COR_TEXTO, size=14)),
+                    yaxis=dict(title="Média por Estabelecimento", tickfont=dict(color=COR_TEXTO, size=12), title_font=dict(color=COR_TEXTO, size=14)),
                     plot_bgcolor=COR_FUNDO,
                     paper_bgcolor=COR_FUNDO,
-                    font=dict(color=COR_TEXTO),
+                    font=dict(color=COR_TEXTO, size=12),
+                    height=400,
                 )
                 st.plotly_chart(fig_faixa, use_container_width=True)
                 st.markdown(

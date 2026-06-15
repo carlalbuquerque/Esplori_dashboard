@@ -61,12 +61,19 @@ def render(dados: tuple, kpis: dict) -> None:
             title="Quantas vezes cada usuário visitou",
             labels={"Check-ins": "Número de Check-ins", "Usuários": "Quantidade de Usuários"},
         )
-        fig_dist.update_traces(textposition="outside")
+        fig_dist.update_traces(textposition="outside", textfont=dict(color=COR_TEXTO, size=10))
         fig_dist.update_layout(
+            title=dict(text="Quantas vezes cada usuário visitou", font=dict(color=COR_TEXTO, size=16)),
+            xaxis=dict(title="Número de Check-ins", tickfont=dict(color=COR_TEXTO, size=12), title_font=dict(color=COR_TEXTO, size=14)),
+            yaxis=dict(title="Quantidade de Usuários", tickfont=dict(color=COR_TEXTO, size=12), title_font=dict(color=COR_TEXTO, size=14)),
             plot_bgcolor=COR_FUNDO,
             paper_bgcolor=COR_FUNDO,
-            font=dict(color=COR_TEXTO),
+            font=dict(color=COR_TEXTO, size=12),
+            height=max(400, len(df_dist) * 48),
         )
+        # garantir ticks inteiros no eixo X: 1,2,3,4,5+
+        ticks = [str(i) for i in range(1, 5)] + ["5+"]
+        fig_dist.update_xaxes(type='category', tickmode='array', tickvals=ticks, ticktext=ticks)
         st.plotly_chart(fig_dist, use_container_width=True)
         st.markdown(
             '<div class="insight-box"><strong>Insight:</strong> '
@@ -112,12 +119,15 @@ def render(dados: tuple, kpis: dict) -> None:
                     "taxa_retencao": "Taxa de Retenção",
                 },
             )
-            fig_ret_faixa.update_traces(textposition="outside")
+            fig_ret_faixa.update_traces(textposition="outside", textfont=dict(color=COR_TEXTO, size=13))
             fig_ret_faixa.update_layout(
+                title=dict(text="Taxa de Retenção (2+ visitas) por Faixa Etária", font=dict(color=COR_TEXTO, size=16)),
+                xaxis=dict(title="Faixa Etária", tickfont=dict(color=COR_TEXTO, size=12), title_font=dict(color=COR_TEXTO, size=14)),
+                yaxis=dict(title="Taxa de Retenção", tickformat=".0%", tickfont=dict(color=COR_TEXTO, size=12), title_font=dict(color=COR_TEXTO, size=14)),
                 plot_bgcolor=COR_FUNDO,
                 paper_bgcolor=COR_FUNDO,
-                font=dict(color=COR_TEXTO),
-                yaxis=dict(tickformat=".0%"),
+                font=dict(color=COR_TEXTO, size=12),
+                height=max(400, len(df_ret_faixa_agg) * 48),
             )
             st.plotly_chart(fig_ret_faixa, use_container_width=True)
             st.markdown(
