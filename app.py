@@ -8,7 +8,7 @@ import streamlit as st
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 st.set_page_config(
-    page_title="Esplori — Dashboard Estabelecimento de Restaurantes",
+    page_title="Esplori — Dashboard para Estabelecimentos Gastronômicos",
     page_icon="",
     layout="wide",
     initial_sidebar_state="expanded",
